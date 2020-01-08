@@ -1,0 +1,542 @@
+<html>
+    <script type="text/javascript" src="angular.min.js"></script>
+
+<head>
+    <style type="text/css">
+        [uib-typeahead-popup].dropdown-menu {
+            display: block;
+        }
+    </style>
+    <style type="text/css">
+        .uib-time input {
+            width: 50px;
+        }
+    </style>
+    <style type="text/css">
+        [uib-tooltip-popup].tooltip.top-left>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.top-right>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.bottom-left>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.bottom-right>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.left-top>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.left-bottom>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.right-top>.tooltip-arrow,
+        [uib-tooltip-popup].tooltip.right-bottom>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.top-left>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.top-right>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.bottom-left>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.bottom-right>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.left-top>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.left-bottom>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.right-top>.tooltip-arrow,
+        [uib-tooltip-html-popup].tooltip.right-bottom>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.top-left>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.top-right>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.bottom-left>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.bottom-right>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.left-top>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.left-bottom>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.right-top>.tooltip-arrow,
+        [uib-tooltip-template-popup].tooltip.right-bottom>.tooltip-arrow,
+        [uib-popover-popup].popover.top-left>.arrow,
+        [uib-popover-popup].popover.top-right>.arrow,
+        [uib-popover-popup].popover.bottom-left>.arrow,
+        [uib-popover-popup].popover.bottom-right>.arrow,
+        [uib-popover-popup].popover.left-top>.arrow,
+        [uib-popover-popup].popover.left-bottom>.arrow,
+        [uib-popover-popup].popover.right-top>.arrow,
+        [uib-popover-popup].popover.right-bottom>.arrow,
+        [uib-popover-html-popup].popover.top-left>.arrow,
+        [uib-popover-html-popup].popover.top-right>.arrow,
+        [uib-popover-html-popup].popover.bottom-left>.arrow,
+        [uib-popover-html-popup].popover.bottom-right>.arrow,
+        [uib-popover-html-popup].popover.left-top>.arrow,
+        [uib-popover-html-popup].popover.left-bottom>.arrow,
+        [uib-popover-html-popup].popover.right-top>.arrow,
+        [uib-popover-html-popup].popover.right-bottom>.arrow,
+        [uib-popover-template-popup].popover.top-left>.arrow,
+        [uib-popover-template-popup].popover.top-right>.arrow,
+        [uib-popover-template-popup].popover.bottom-left>.arrow,
+        [uib-popover-template-popup].popover.bottom-right>.arrow,
+        [uib-popover-template-popup].popover.left-top>.arrow,
+        [uib-popover-template-popup].popover.left-bottom>.arrow,
+        [uib-popover-template-popup].popover.right-top>.arrow,
+        [uib-popover-template-popup].popover.right-bottom>.arrow {
+            top: auto;
+            bottom: auto;
+            left: auto;
+            right: auto;
+            margin: 0;
+        }
+
+        [uib-popover-popup].popover,
+        [uib-popover-html-popup].popover,
+        [uib-popover-template-popup].popover {
+            display: block !important;
+        }
+    </style>
+    <style type="text/css">
+        .uib-datepicker-popup.dropdown-menu {
+            display: block;
+            float: none;
+            margin: 0;
+        }
+
+        .uib-button-bar {
+            padding: 10px 9px 2px;
+        }
+    </style>
+    <style type="text/css">
+        .uib-position-measure {
+            display: block !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+        }
+
+        .uib-position-scrollbar-measure {
+            position: absolute !important;
+            top: -9999px !important;
+            width: 50px !important;
+            height: 50px !important;
+            overflow: scroll !important;
+        }
+
+        .uib-position-body-scrollbar-measure {
+            overflow: scroll !important;
+        }
+    </style>
+    <style type="text/css">
+        .uib-datepicker .uib-title {
+            width: 100%;
+        }
+
+        .uib-day button,
+        .uib-month button,
+        .uib-year button {
+            min-width: 100%;
+        }
+
+        .uib-left,
+        .uib-right {
+            width: 100%
+        }
+    </style>
+    <style type="text/css">
+        .ng-animate.item:not(.left):not(.right) {
+            -webkit-transition: 0s ease-in-out left;
+            transition: 0s ease-in-out left
+        }
+    </style>
+    <style type="text/css">
+        @charset "UTF-8";
+
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak,
+        .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-shim {
+            visibility: hidden;
+        }
+
+        .ng-anchor {
+            position: absolute;
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>Credit Card Application</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width"><!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/vendor-b1987bc056.css">
+    <link rel="stylesheet" href="styles/app-81de6b9cc0.css">
+</head>
+
+<body id="citi4" class="gray-bg">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- uiView: -->
+    <div ui-view="" class="ng-scope">
+        <div class="gray-bg top-navigation ng-scope">
+            <div class="row border-bottom white-bg">
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-header"><button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button"><i class="fa fa-reorder"></i></button> <a href="#" class="navbar-brand"><b>Apply For New Credit Card</b></a></div>
+                    <div class="navbar-collapse collapse" id="navbar">
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <!-- <img ng-src="{{vm.logoImg}}" width="108"/> -->
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- Start: Left-most panel -->
+            <div class="col-xs-6 nomargins nopaddings">
+                <div class="row nomargins document-upload-panel">
+                    <!-- Start: Dropzone -->
+                    <div class="ibox nomargins border-bottom col-xs-6">
+                        <div class="ibox-title">
+                            <h5>Add Application Document</h5>
+                        </div>
+                        <div class="ibox-content scroll-y dropzone-area">
+                            <div class="dropzone ng-isolate-scope dz-clickable" callbacks="vm.dzCallbacks" methods="vm.dzMethods" ng-dropzone="">
+                                <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End: Dropzone -->
+
+                    <!-- Start: Document list -->
+                    <div class="ibox nomargins border-bottom col-xs-6" cg-busy="vm.loading" style="position: relative;">
+                        <div class="ibox-title">
+                            <h5>Application Documents</h5>
+                        </div>
+                        <div class="ibox-content scroll-y nopaddings">
+                            <ul class="list-group elements-list nomargins">
+                                <!-- ngIf: !vm.uploadingDocsList.length && !vm.documentList.length -->
+                                <li ng-if="!vm.uploadingDocsList.length &amp;&amp; !vm.documentList.length" class="text-center ng-scope"><br><br>
+                                    <h4 class="text-muted">No Documents In Process</h4>
+                                </li><!-- end ngIf: !vm.uploadingDocsList.length && !vm.documentList.length -->
+                                <!-- ngRepeat: uploadingDoc in vm.uploadingDocsList -->
+                                <!-- ngRepeat: doc in vm.documentList | orderBy:'-timestamp' -->
+                            </ul>
+                        </div>
+                        <div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()" aria-hidden="true" style=""></div>
+                        <div class="cg-busy cg-busy-animation ng-scope ng-hide" ng-show="$cgBusyIsActive()" aria-hidden="true" style="">
+                            <div class="cg-busy-default-wrapper" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+
+                                <div class="cg-busy-default-sign">
+
+                                    <div class="cg-busy-default-spinner">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                        <div class="bar4"></div>
+                                        <div class="bar5"></div>
+                                        <div class="bar6"></div>
+                                        <div class="bar7"></div>
+                                        <div class="bar8"></div>
+                                        <div class="bar9"></div>
+                                        <div class="bar10"></div>
+                                        <div class="bar11"></div>
+                                        <div class="bar12"></div>
+                                    </div>
+
+                                    <div class="cg-busy-default-text ng-binding">Please Wait...</div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><!-- END: Document list -->
+                </div>
+                <application-form user-id="vm.userId" api="vm.appFormApi" document-viewer-api="vm.documentViewerApi" class="ng-isolate-scope">
+                    <!-- START: Application Form -->
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <h2>Application Form</h2>
+                            <div class="hr-line-dashed"></div>
+                            <form class="app-form ng-pristine ng-valid" name="appForm">
+                                <!-- ngRepeat: section in $ctrl.formSections -->
+                                <div class="form-section mb-10 ng-scope" ng-repeat="section in $ctrl.formSections">
+                                    <h3 class="ng-binding">PERSONAL DETAILS</h3><!-- ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Citizenship</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' --><select name="CITIZENSHIP" ng-if="field.type === 'select'" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" ng-options="o as o for o in field.options" aria-invalid="false">
+                                                <option value="?" selected="selected"></option>
+                                                <option label="Singaporean" value="string:Singaporean">Singaporean</option>
+                                                <option label="Singapore PR" value="string:Singapore PR">Singapore PR</option>
+                                                <option label="Foreigner" value="string:Foreigner">Foreigner</option>
+                                            </select><!-- end ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Full Name</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="NAME" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">NRIC / FIN</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="ID" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Birth Date</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="DOB" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Postal Code</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="POSTALCODE" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Address 1</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="ADDRESS" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Address 2</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="ADDRESS_TWO" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                </div><!-- end ngRepeat: section in $ctrl.formSections -->
+                                <div class="form-section mb-10 ng-scope" ng-repeat="section in $ctrl.formSections">
+                                    <h3 class="ng-binding">EMPLOYMENT DETAILS</h3><!-- ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Company Name</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="COMPANY_NAME" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Job Title</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="JOB_TITLE" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Employment Status</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' --><select name="EMP_STATUS" ng-if="field.type === 'select'" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" ng-options="o as o for o in field.options" aria-invalid="false">
+                                                <option value="?" selected="selected"></option>
+                                                <option label="Employed" value="string:Employed">Employed</option>
+                                                <option label="Unemployed" value="string:Unemployed">Unemployed</option>
+                                                <option label="Self-Employed" value="string:Self-Employed">Self-Employed</option>
+                                            </select><!-- end ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Years Of Employment</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="EMP_YEARS" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                    <div class="form-group ng-scope" ng-repeat="field in section.fields" ng-class="{
+          'has-error': $ctrl.metadata[field.dataKey].overallConfidence <= 0.5 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey),
+          'has-warning': $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 &amp;&amp; !$ctrl.isFieldUserChanged(field.dataKey)
+          }"><label class="text-muted control-label ng-binding">Monthly Income (SGD)</label>
+                                        <div class="input-group"><span class="input-group-addon">
+                                                <!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) --><span ng-if="!$ctrl.isFieldUserChanged(field.dataKey)" ng-bind-html="$ctrl.metadata[field.dataKey].overallConfidence | confidenceIndicator" class="ng-binding ng-scope"><i class="fa fa-fw"></i></span><!-- end ngIf: !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                                <!-- ngIf: $ctrl.isFieldUserChanged(field.dataKey) --> </span><!-- ngIf: !field.type --><input name="MONTHLY_INCOME" ng-if="!field.type" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-empty" ng-model="$ctrl.inputData[field.dataKey]" aria-invalid="false"><!-- end ngIf: !field.type -->
+                                            <!-- ngIf: field.type === 'select' -->
+                                            <!-- ngIf: field.type === 'radio' -->
+                                            <!-- ngIf: $ctrl.metadata[field.dataKey] && !$ctrl.isFieldUserChanged(field.dataKey) -->
+                                        </div><!-- ngIf: !$ctrl.isFieldUserChanged(field.dataKey) && $ctrl.metadata[field.dataKey].overallConfidence <= 0.8 -->
+                                        <!-- ngIf: $ctrl.metadata[field.dataKey] && $ctrl.isFieldUserChanged(field.dataKey) -->
+                                    </div><!-- end ngRepeat: field in section.fields -->
+                                </div><!-- end ngRepeat: section in $ctrl.formSections --><button ng-disabled="$ctrl.isSubmitting" ng-click="$ctrl.submit()" class="btn btn-block btn-success">
+                                    <!-- ngIf: $ctrl.isSubmitting -->
+                                    <!-- ngIf: !$ctrl.isSubmitting -->
+                                    <div ng-if="!$ctrl.isSubmitting" class="ng-scope">Submit Application</div><!-- end ngIf: !$ctrl.isSubmitting -->
+                                </button>
+                            </form>
+                        </div>
+                    </div><!-- END: Application Form-->
+                </application-form>
+            </div><!-- END: Left-most panel -->
+            <!-- Start: Document & Data Section -->
+            <div hl-sticky="" class="col-xs-6 nomargins nopaddings ng-isolate-scope hl-sticky" style="">
+                <document-viewer api="vm.documentViewerApi" class="ng-isolate-scope">
+                    <div class="ibox nomargins border-left">
+                        <!--   <div class="ibox-title">
+    <h5>Document Viewer</h5>
+  </div> -->
+                        <div cg-busy="$ctrl.loading" class="ibox-content nopaddings border-bottom" style="position: relative;">
+                            <!--   <table ng-if="$ctrl.hasData" class="table table-condensed" style="width:600px;">
+      <tr>
+        <td colspan="2" class="text-center">
+          <button 
+          ng-click="$ctrl.loadDatapointAtIndex($ctrl.currDatapointIndex-1)" 
+          ng-hide="$ctrl.currDatapointIndex == 0"
+          class="btn btn-xs btn-white"><i class="fa fa-chevron-left"></i></button>
+
+          &nbsp;&nbsp;
+          <b>Viewing {{$ctrl.currDatapointIndex + 1}} of {{$ctrl.datapoints.length}} datapoints</b>
+          &nbsp;&nbsp;
+
+          <button 
+          ng-click="$ctrl.loadDatapointAtIndex($ctrl.currDatapointIndex+1)"
+          ng-hide="$ctrl.currDatapointIndex >= $ctrl.datapoints.length-1"
+          class="btn btn-xs btn-white"><i class="fa fa-chevron-right"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right">Field</td>
+        <td>{{$ctrl.currentDatapoint.name}}</td>
+      </tr>
+      <tr>
+        <td class="text-right">Value</td>
+        <td>{{$ctrl.currentDatapoint.value}}</td>
+      </tr>
+      <tr>
+        <td class="text-right">Type</td>
+        <td>{{$ctrl.currentDatapoint.positions.length ? 'Data Hit (' + $ctrl.currentDatapoint.positions.length + ')' : 'Inferred'}}</td>
+      </tr>
+      <tr>
+        <td class="text-right">Confidence</td>
+        <td>{{$ctrl.currentDatapoint.confidence}}</td>
+      </tr>
+    </table> -->
+                            <div ng-show="$ctrl.hasData" class="pdf-holder ng-hide" aria-hidden="true">
+                                <div class="metadata-panel">
+                                    <div><button ng-click="$ctrl.loadDatapointAtIndex($ctrl.currDatapointIndex-1)" ng-hide="$ctrl.currDatapointIndex == 0" class="btn btn-xs btn-info btn-rounded ng-hide" aria-hidden="true"><i class="fa fa-chevron-left"></i>&nbsp;Previous</button> &nbsp;&nbsp; <b class="ng-binding">Viewing 1 of datapoints</b> &nbsp;&nbsp; <button ng-click="$ctrl.loadDatapointAtIndex($ctrl.currDatapointIndex+1)" ng-hide="$ctrl.currDatapointIndex >= $ctrl.datapoints.length-1" class="btn btn-xs btn-info btn-rounded ng-hide" aria-hidden="true">Next&nbsp;<i class="fa fa-chevron-right"></i></button></div>
+                                    <div class="row nomargins mt-5 text-left">
+                                        <div class="col-md-4 ng-binding"><b>Field:</b> </div>
+                                        <div class="col-md-3 ng-binding"><b>Type:</b> Inferred</div>
+                                        <div class="col-md-3 ng-binding"><b>Confidence:</b> </div>
+                                        <div class="col-md-2 ng-binding"><b>DPI:</b> </div>
+                                    </div>
+                                    <div class="row nomargins">
+                                        <div class="col-md-12 text-left ng-binding"><b>Extracted Value:</b> </div>
+                                    </div>
+                                </div><!-- ngRepeat: item in $ctrl.annotations --><canvas id="the-canvas" style="width:600px"></canvas>
+                            </div>
+                            <h3 ng-hide="$ctrl.hasData" class="text-muted text-center" aria-hidden="false"><br><br><br>Select a Datapoint to View<br><br><br></h3>
+                            <div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true"></div>
+                            <div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="$cgBusyIsActive()" aria-hidden="true">
+                                <div class="cg-busy-default-wrapper" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+
+                                    <div class="cg-busy-default-sign">
+
+                                        <div class="cg-busy-default-spinner">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+
+                                        <div class="cg-busy-default-text ng-binding">Please Wait...</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </document-viewer>
+            </div><!-- END: Document & Data Section -->
+
+        </div>
+    </div>
+    <script src="scripts/vendor-f4cd120633.js"></script>
+    <script src="scripts/app-a64b1e2d54.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDT-uUhjpi68P57CKxyxYEa8iEVCX4V_Sk",
+            authDomain: "imatch-demos.firebaseapp.com",
+            databaseURL: "https://imatch-demos.firebaseio.com",
+            projectId: "imatch-demos",
+            storageBucket: "imatch-demos.appspot.com",
+            messagingSenderId: "372181016904"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        // Disable auto discover for all elements:
+        Dropzone.autoDiscover = false;
+    </script><input type="file" multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+</body></html>

@@ -1,0 +1,362 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Ekstrak Rekening Giro</title>
+<!--
+    DO NOT SIMPLY COPY THOSE LINES. Download the JS and CSS files from the  latest release (https://github.com/enyo/dropzone/releases/latest), and
+    host them yourself!--> 
+<script src="scripts/dropzone.js"></script> 
+<script src="scripts/progStages.js"></script> 
+<script src="scripts/Canvas.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="styles/vendor-b1987bc056.css">
+<link rel="stylesheet" href="styles/app-81de6b9cc0.css">
+<link rel="stylesheet" href="styles/ProgressStages.css">
+<link rel="stylesheet" href="styles/TabContent.css">
+<link rel="stylesheet" href="styles/Canvas.css">
+<!--<link rel="stylesheet" href="styles/Datapoints.css">-->
+</head>
+<body id="citi4" class="gray-bg">
+<div ui-view="" class="ng-scope">
+  <div class="gray-bg top-navigation ng-scope">
+    <div class="row border-bottom white-bg">
+      <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-header">
+          <button aria-controls="navbar" aria-expanded="false"
+                  data-target="#navbar"
+                  data-toggle="collapse"
+                  class="navbar-toggle collapsed"
+                  type="button"> <i class="fa fa-reorder"></i></button>
+          <a href="#" class="navbar-brand"><b>Ekstrak Rekening Giro</b> </a> </div>
+        <div class="navbar-collapse collapse" id="navbar">
+          <ul class="nav navbar-top-links navbar-right">
+            <li> 
+              <!-- <img ng-src="{{vm.logoImg}}" width="108"/> --> <br>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- Start: Left-most panel -->
+    <div class="col-xs-6 nomargins nopaddings">
+      <div class="row nomargins document-upload-panel"> 
+        <!-- Start: Dropzone -->
+        <div class="ibox nomargins border-bottom col-xs-6">
+          <div class="ibox-title">
+            <h5>Unggah Dokumen</h5>
+          </div>
+          <div class="ibox-content scroll-y dropzone-area">
+            <div id="dropzone">
+              <form class="dropzone needsclick" id="demo-upload" action="/">
+                <div class="dz-message needsclick"> Klik untuk mengunggah<br>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Start: Document list -->
+        <div class="ibox nomargins border-bottom col-xs-6" cg-busy="vm.loading"
+                style="position: relative;">
+          <div class="ibox-title">
+            <h5>Application Documents</h5>
+          </div>
+          <div class="ibox-content scroll-y nopaddings">
+            <div class="progress" id="">
+              <div class="circle"> <span class="label">1</span> <span class="title">Mula</span> </div>
+              <span class="bar"></span>
+              <div class="circle"> <span class="label">2</span> <span class="title">Unggah</span> </div>
+              <span class="bar"></span>
+              <div class="circle"> <span class="label">3</span> <span class="title">Klasifikasi</span> </div>
+              <span class="bar"></span>
+              <div class="circle"> <span class="label">4</span> <span class="title">Ekstrak</span> </div>
+            </div>
+            <div><img src="pics/multiDoc.png" style="width:50px;height:60px;" class="imageDocs" id="imgUpload" alt=""/></div>
+            <div id="progABar">
+              <div class="labelText">
+                <label>Rekening Giro</label>
+              </div>
+              <div class="progBar">
+                <div id="dynamicA" class="progVal progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span id="current-progress"></span> </div>
+              </div>
+            </div>
+            <div class="text-center ng-scope" id="noDoc"> <br>
+              <br>
+              <h4 class="text-muted">Tidak ada dokumen yang diproses</h4>
+            </div >
+          </div>
+        </div>
+        <!-- END: Document list --> 
+      </div>
+      <div class="tabs">
+        <div class="tab" id="tabsContent1">
+          <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+          <label for="tab-1" class="tab-label">INFORMASI UTAMA</label>
+          <div class="tab-content-full">
+            <div class="tab-content-left">
+              <table>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="ROMEO PERSADA UATAMA PT" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">Nama Perusahaan</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('comName','1')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" style="color: red; font-weight: bold; font-size: 11px;" value="DEPOK, CATURTUNGGAL, JL DEMANGAN BARU " required>
+                      <input type="text" style="color: red; font-weight: bold; font-size: 11px;" value="N0 16, Y0GYAKARTA 55281, IND0NESIA" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Alamat Perusahaan</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('alamat','1')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" style="" value="-1,031,360,751.31" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Saldo Awal</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('sawal','14')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" style="" value="904,438,858.22" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi CR</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('mcr','14')">view</button>
+                    </div></td>
+                </tr>
+              </table>
+            </div>
+            <div class="tab-content-right">
+              <table>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="4567838888" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">No. Rekening</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('rekening','1')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="31-01-19 S/D 28-02-19" required>
+                      <input type="text" value="JANUARI" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Periode</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('periode','1')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" style="color: red; font-weight: bold" value="-8l2,095,622.37" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Saldo Akhir</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('sakhir','14')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="685,173,729.28" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi DB</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('mdb','14')">view</button>
+                    </div></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab" id="tabsContent2">
+          <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+          <label for="tab-2" class="tab-label">KARTUR KREDIT</label>
+          <div class="tab-content-full">
+            <label class="tabLabel">Kartu Kredit Melebihi Rp 500,000.00</label>
+            <div class="tab-content-left">
+              <table>
+                <tr>
+                  <td ><div class="dateLabel">1/02</div></td>
+                  <td><div class="group">
+                      <input type="text" value="000680203" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td ><div class="dateLabel">11/02</div></td>
+                  <td><div class="group">
+                      <input type="text" value="000679982" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td ><div class="dateLabel">14/02</div></td>
+                  <td><div class="group">
+                      <input type="text" value="000679982" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td ><div class="dateLabel">26/02</div></td>
+                  <td><div class="group">
+                      <input type="text" value="000679982" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td ><div class="dateLabel">28/02</div></td>
+                  <td><div class="group">
+                      <input type="text" style="color: red; font-weight: bold;" value="00O679982" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td ><div class="dateLabel">28/02</div></td>
+                  <td><div class="group">
+                      <input type="text" style="color: red; font-weight: bold;" value="0006802O3" required>
+                      <span class="highlight"></span><span class="bar"></span>
+                      <label class="conLabel">MID</label>
+                    </div></td>
+                </tr>
+              </table>
+            </div>
+            <div class="tab-content-right">
+              <table>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="508,649.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel"> Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k1','1')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="514,974.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k2','5')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="1,272,191.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k3','6')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="1,465,931.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k4','13')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="522,122.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k5','13')">view</button>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td><div class="group">
+                      <input type="text" value="574,670.00" required>
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label class="conLabel">Mutasi</label>
+                    </div></td>
+                  <td><div class="miniButton">
+                      <button class="mini" onclick="viewDataPoint('k6','13')">view</button>
+                    </div></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab" id="tabsContent3">
+          <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+          <label for="tab-3" class="tab-label">TRSF E-BANKING</label>
+          <div class="tab-content"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  	<div id="detailsBox9" class="detailsBox" >
+		<h5>Confidence: 0.9</h5><h5>DPI: 200</h5>
+    </div>
+	
+	<div id="detailsBox6" class="detailsBox" >
+		<h5>Confidence: 0.6</h5><h5>DPI: 200</h5>
+    </div>
+    <canvas id="theCanvas"> </canvas>
+  
+</div>
+</body>
+<script>
+	window.onload = function() {
+		
+		document.getElementById("detailsBox9").style.display = "none";
+		document.getElementById("detailsBox6").style.display = "none";
+		document.getElementById("imgUpload").style.display = "none";
+  		document.getElementById("progABar").style.display = "none";		
+		document.getElementById("tabsContent1").style.display = "none";
+		document.getElementById("tabsContent2").style.display = "none";
+		document.getElementById("tabsContent3").style.display = "none";
+		document.getElementById("tabsContent4").style.display = "none";
+		
+				
+};
+	
+	(function($) {
+
+	var tabs =  $(".tabs li a");
+  
+	tabs.click(function() {
+		var content = this.hash.replace('/','');
+		tabs.removeClass("active");
+		$(this).addClass("active");
+    $("#content").find('p').hide();
+    $(content).fadeIn(200);
+	});
+
+})(jQuery);
+		
+	</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</html>

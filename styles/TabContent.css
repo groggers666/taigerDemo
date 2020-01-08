@@ -1,0 +1,286 @@
+* {
+  box-sizing: border-box;
+}
+wrapperBody {
+  font-family: "Open Sans";
+  background: #fff;
+  color: #fff;
+  line-height: 1.618em;
+	
+}
+
+.tableCol1 {
+	padding-right: 250px;
+}
+
+.tableCol2 {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.miniButton{	
+	padding-left:0px;
+	padding-right:10px;
+}
+
+button, input[type="submit"] {
+  background-image: -webkit-linear-gradient(top, #474747, #333333);
+  padding-bottom: 10px;
+  border-radius: 4px;
+  position: relative;
+	
+  border: 1px solid #333333;
+	
+  color: #FFF;
+  opacity: 0.9; }
+  button.mini, input[type="submit"].mini {
+    padding: 5px;
+	left: -20px;}
+  button.success, input[type="submit"].success {
+    border: 1px solid #4787ed;
+    background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed); }
+  button.alert, input[type="submit"].alert {
+    border: 1px solid #ef6c5e;
+    background-image: -webkit-linear-gradient(top, #ef6c5e, #ef6c5e); }
+  button:hover, input[type="submit"]:hover {
+    cursor: pointer;
+    opacity: 1; }
+
+.tableColSupp2 {
+	padding-right: 20px;
+	padding-left: 100px;
+}
+
+.tableX {
+	padding-left: 10px;
+	
+}
+
+
+.wrapperTab {  
+  width: 100%;
+  margin-top: 405px;
+  margin-left: 0px;
+  
+	
+}
+.tabs {
+  position: absolute;  
+  background: #fff;  
+  height: 200%;
+  width:100%	
+}
+.tabs::before,
+.tabs::after {
+  content: "";
+  display: table;
+}
+.tabs::after {
+  clear: both;
+}
+.tab {
+  float: left;
+}
+.tab-switch {
+  display: none;
+}
+.tab-label {
+  position: relative;
+  display: block;
+  line-height: 2.75em;
+  height: 3em;
+  padding: 0 1.618em;
+  background: #265185;
+  border-right: 0.125rem solid #16a085;
+  color: #fff;
+  cursor: pointer;
+  top: 0;
+  transition: all 0.25s;
+}
+.tab-label:hover {
+  top: -0.25rem;
+  transition: top 0.25s;
+}
+
+.tab-content-full {
+  height: 100%;
+	width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  padding: 1.618rem;
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0.25rem solid #bdc3c7;
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+.tab-content-left {
+  height: 100%;
+	width: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  padding: 1.618rem;
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0.25rem solid #bdc3c7;
+  
+  
+}
+
+.tab-content-right {
+  height: 100%;
+	width: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 40;
+  left:50%;
+  padding: 1.618rem;
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0.25rem solid #bdc3c7;
+  
+  
+}
+.tab-switch:checked + .tab-label {
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0;
+  border-right: 0.125rem solid #fff;
+  transition: all 0.35s;
+  z-index: 1;
+  top: -0.0625rem;
+}
+.tab-switch:checked + label + .tab-content-full {
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.35s;
+}
+
+.tabLabel{
+	font-size: 20px;
+	font-style: oblique;
+	position:relative;
+	margin-left:30%;
+	
+}
+
+.dateLabel{
+	padding-right: 40px;
+	margin-top: -20px;
+	
+}
+
+/**CSS for input fields
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+  
+}
+
+input 				{
+  font-size:15px;
+  padding:30px 10px 10px 5px;  
+  
+  display:block;
+  width:90%;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.conlabel 				 {
+  color:#999; 
+  font-size:16px;
+  font-weight:bold;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:30px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+
+/* active state */
+input:focus ~ .conlabel, input:valid ~ .conlabel 		{
+  top:5px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}**/
+
+/*Kartu Kredit Line Items*/
+
+.KK1 {
+  width: 500px;
+  top: 20px;
+  right: 800px;
+}
+
+
+
